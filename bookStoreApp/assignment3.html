@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+
+<head>
+  <!--<script data-require="angular.js@1.5.8" data-semver="1.5.8" src="https://code.angularjs.org/1.5.8/angular.js"></script>-->
+  <script src="D:\Work\AngularJS\angular-1.4.3\angular-1.4.3\angular.js"></script>
+  <script type="text/javascript" src="app.js"></script>
+  <script type="text/javascript" src="service.js"></script>
+
+  
+  <script type="text/javascript" src="controller.js"></script>
+  <link rel="stylesheet" type="text/css" href="theme.css"> 
+</head>
+
+<body>
+
+  <!-- The Modal -->
+<div id="myModal" class="modal" >
+
+  <!-- Modal content -->
+  <div class="modal-content" ng-controller="myCtrl">
+    <div class="modal-header">
+      <span class="close">×</span>
+      <h2>Order Book</h2>
+    </div>
+    <div class="modal-body">
+      Quantity:   
+      <input name="inStock" type="text" ng-model="book.orderQuantity">
+      <br>
+      <br>
+      <br>
+      <button type="submit" value="Submit" ng-click="orderBookWithQuantiy(book)">Order</button>
+      <button type="cancel" value="Cancel" ng-click="closeWindow()">Cancel</button>
+    </div>
+  </div>
+
+</div>
+
+  <div ng-controller="myCtrl">
+    <form>
+
+    Auther :
+    <input name="auther" type="text" ng-model="book.auther">
+    <br> Title :
+    <input name="title" type="text" ng-model="book.title">
+    <br> Number of Pages :
+    <input name="numPages" type="text" ng-model="book.numPages">
+    <br> Description :
+    <input name="description" type="text" ng-model="book.description">
+    <br> In Stock :
+    <input name="inStock" type="text" ng-model="book.inStock">
+    <br> Price :
+    <input name="price" type="text" ng-model="book.price">
+    <br>
+    <br>
+    <button type="submit" value="Submit" ng-click="addBook(book)">Add book</button>
+    <br>
+    <br>
+    <b>{{err}}</b>
+    <br>
+    <br>
+  </form>
+
+
+    <table border="1" >
+      <tr>
+        <th>Auther</th>
+        <th>Title</th>
+        <th>Number of Pages</th>
+        <th>Description</th>
+        <th>In Stock</th>
+        <th>Price</th>
+        <th>Remove Book</th>
+      </tr>
+      <tr ng-repeat="book in books">
+        <td>{{book.auther}}</td>
+        <td>{{book.title}}</td>
+        <td>{{book.numPages}}</td>
+        <td>{{book.description}}</td>
+        <td>{{book.inStock}}</td>
+        <td>{{book.price}}</td>
+        <td>
+          <button type="submit" value="remove" ng-click="removeBook(book)">Remove book</button>
+        </td> 
+        <td>
+          <button type="submit" value="order" ng-click="orderBook(book)">Order Book</button>
+        </td>        
+      </tr>
+    </table>
+
+  </div>
+
+</body>
+
+</html>
