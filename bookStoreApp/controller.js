@@ -1,8 +1,8 @@
 (function() {
+
     'use strict'
 
-    var myCtrl = app.controller('myCtrl', ['$scope', 'BookService', function($scope, BookService) {
-
+    angular.module('myApp').controller('myCtrl', ['$scope', 'BookService', function($scope, BookService) {
         $scope.books = BookService.getBookListArray();
         $scope.book = {};
         $scope.bookToOrder = BookService.getBookToOrder();
@@ -28,8 +28,6 @@
             } else {
                 $scope.err = "Book already contains";
             }
-
-
         }
 
         $scope.removeBook = function(book) {
@@ -39,12 +37,10 @@
                     $scope.books.splice(i, 1);
                 }
             }
-
             $scope.err = "Book removed";
         }
 
         $scope.orderBook = function(book) {
-
             BookService.setBookToOrder(book);
             //$scope.bookToOrder = BookService.getBookToOrder();
             $scope.bookToOrder = book;
@@ -58,8 +54,6 @@
             var span = document.getElementsByClassName("close")[0];
 
             modal.style.display = "block";
-
-
         }
 
         $scope.closeWindow = function() {
@@ -72,7 +66,6 @@
         $scope.contains = function(book, books) {
 
             var containsBook = false;
-
             //extract sub arrays from books for each property
             var autherArry = books.map(function(books) {
                 return books.auther;
@@ -102,7 +95,6 @@
             // Get the modal
             var modal = document.getElementById('myModal');
             $scope.placeOrder(quantity);
-
             modal.style.display = "none";
         }
 

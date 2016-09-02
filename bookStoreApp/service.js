@@ -1,5 +1,8 @@
 (function(){
-	app.service('BookService', function(){
+
+	'use strict'
+	
+	angular.module('myApp').service('BookService', function(){
 
 		this.bookList = [];
 		this.bookToOrder = {};
