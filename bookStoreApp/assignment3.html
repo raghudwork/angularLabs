@@ -15,19 +15,21 @@
 
 <body>
 
+  Angular Bookstore App
+  <br>
+  <br>
+
   <!-- The Modal -->
 <div id="myModal" class="modal" >
 
   <!-- Modal content -->
   <div class="modal-content" ng-controller="myCtrl">
     <div class="modal-header">
-      <span class="close">×</span>
-      <h2>Order Book</h2>
+      <h3>Order Book</h3>
     </div>
     <div class="modal-body">
       Quantity:   
       <input name="inStock" type="text" ng-model="book.orderQuantity">
-      <br>
       <br>
       <br>
       <button type="submit" value="Submit" ng-click="orderBookWithQuantiy(book)">Order</button>
@@ -38,6 +40,41 @@
 </div>
 
   <div ng-controller="myCtrl">
+    
+
+
+    <table border="1" >
+      <tr>
+        <th>Auther</th>
+        <th>Title</th>
+        <th>Number of Pages</th>
+        <th>Description</th>
+        <th>In Stock</th>
+        <th>Price</th>
+        <th>Remove Book</th>
+        <th>Order Book</th>
+      </tr>
+      <tr>
+        <td><input name="autherSearch" type="text" placeholder="Search auther by name" ng-model="autherSearchString"></td>         
+      </tr>
+      <tr ng-repeat="book in books | searchAuther:autherSearchString">
+        <td>{{book.auther}}</td>
+        <td>{{book.title}}</td>
+        <td>{{book.numPages}}</td>
+        <td>{{book.description}}</td>
+        <td>{{book.inStock}}</td>
+        <td>{{book.price}}</td>
+        <td>
+          <button type="submit" value="remove" ng-click="removeBook(book)">Remove book</button>
+        </td> 
+        <td>
+          <button type="submit" value="order" ng-click="orderBook(book)">Order Book</button>
+        </td>        
+      </tr>
+    </table>
+
+<br><br><br>
+
     <form>
 
     Auther :
@@ -55,42 +92,10 @@
     <br>
     <br>
     <button type="submit" value="Submit" ng-click="addBook(book)">Add book</button>
-    <br>
-    <br>
     <b>{{err}}</b>
     <br>
     <br>
   </form>
-
-
-    <table border="1" >
-      <tr>
-        <th>Auther</th>
-        <th>Title</th>
-        <th>Number of Pages</th>
-        <th>Description</th>
-        <th>In Stock</th>
-        <th>Price</th>
-        <th>Remove Book</th>
-      </tr>
-      <tr>
-        <td><input name="autherSearch" type="text" placeholder="Enter auther name" ng-model="autherSearchString"></td>         
-      </tr>
-      <tr ng-repeat="book in books | searchAuther:autherSearchString">
-        <td>{{book.auther}}</td>
-        <td>{{book.title}}</td>
-        <td>{{book.numPages}}</td>
-        <td>{{book.description}}</td>
-        <td>{{book.inStock}}</td>
-        <td>{{book.price}}</td>
-        <td>
-          <button type="submit" value="remove" ng-click="removeBook(book)">Remove book</button>
-        </td> 
-        <td>
-          <button type="submit" value="order" ng-click="orderBook(book)">Order Book</button>
-        </td>        
-      </tr>
-    </table>
 
   </div>
 

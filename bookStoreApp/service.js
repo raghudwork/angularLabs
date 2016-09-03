@@ -6,7 +6,7 @@
 
 		this.bookList = [];
 		this.bookToOrder = {};
-		this.message = "Welcome to Angular Book Store";
+		this.message = "";
 
 		var test = tempBooks;
 
