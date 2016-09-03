@@ -1,0 +1,40 @@
+var tempBooks = [{
+        auther: "Raghu",
+        title: "Raghu book",
+        numPages: "2",
+        description: "Raghu written",
+        inStock: "20",
+        price: "200"
+    },
+    {
+        auther: "Ravi",
+        title: "Ravi book",
+        numPages: "2",
+        description: "Ravi written",
+        inStock: "20",
+        price: "200"
+    },
+    {
+        auther: "Santhosh",
+        title: " Santhosh book",
+        numPages: "2",
+        description: "Santhosh written",
+        inStock: "20",
+        price: "200"
+    },
+    {
+        auther: "Virat",
+        title: "Virat book",
+        numPages: "2",
+        description: "Virat written",
+        inStock: "20",
+        price: "200"
+    },
+    {
+        auther: "Dhoni",
+        title: "Dhoni book",
+        numPages: "2",
+        description: "Dhoni written",
+        inStock: "20",
+        price: "200"
+    }]

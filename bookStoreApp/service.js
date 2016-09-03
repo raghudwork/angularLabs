@@ -7,6 +7,13 @@
 		this.bookList = [];
 		this.bookToOrder = {};
 		this.message = "Welcome to Angular Book Store";
+
+		var test = tempBooks;
+
+		for (var i=0; i < test.length; i++) {
+		  this.bookList.push(test[i]);
+		}
+
 		this.addBookToBookList = function(book){
 			//duplicates will not be passed. Just add it
 			bookList.push(book);

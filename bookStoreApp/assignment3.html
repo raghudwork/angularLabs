@@ -4,9 +4,12 @@
 <head>
   <!--<script data-require="angular.js@1.5.8" data-semver="1.5.8" src="https://code.angularjs.org/1.5.8/angular.js"></script>-->
   <script src="D:\Work\AngularJS\angular-1.4.3\angular-1.4.3\angular.js"></script>
+  <script type="text/javascript" src="books.json"></script>
   <script type="text/javascript" src="app.js"></script>
   <script type="text/javascript" src="service.js"></script>  
+  <script type="text/javascript" src="filter.js"></script> 
   <script type="text/javascript" src="controller.js"></script>
+
   <link rel="stylesheet" type="text/css" href="theme.css"> 
 </head>
 
@@ -70,7 +73,10 @@
         <th>Price</th>
         <th>Remove Book</th>
       </tr>
-      <tr ng-repeat="book in books">
+      <tr>
+        <td><input name="autherSearch" type="text" placeholder="Enter auther name" ng-model="autherSearchString"></td>         
+      </tr>
+      <tr ng-repeat="book in books | searchAuther:autherSearchString">
         <td>{{book.auther}}</td>
         <td>{{book.title}}</td>
         <td>{{book.numPages}}</td>

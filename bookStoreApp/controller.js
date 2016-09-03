@@ -3,6 +3,7 @@
     'use strict'
 
     angular.module('myApp').controller('myCtrl', ['$scope', 'BookService', function($scope, BookService) {
+
         $scope.books = BookService.getBookListArray();
         $scope.book = {};
         $scope.bookToOrder = BookService.getBookToOrder();
@@ -18,15 +19,16 @@
                     description: book.description,
                     inStock: book.inStock,
                     price: book.price
-                };
-                $scope.err = "Book Added";
+                };                
                 BookService.setMessage("Book Added");
+                $scope.err = BookService.getMessage();
                 $scope.books.push(temp);
                 // emptying the object after adding the book
                 $scope.book = {};
 
             } else {
-                $scope.err = "Book already contains";
+                BookService.setMessage("Book already contains");
+                $scope.err = BookService.getMessage();
             }
         }
 
@@ -96,6 +98,7 @@
             var modal = document.getElementById('myModal');
             $scope.placeOrder(quantity);
             modal.style.display = "none";
+            BookService.setMessage("Book order placed");
         }
 
     }])
