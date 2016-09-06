@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<div ng-controller="myCtrl">
+      <table border="1" >
+         <tr>
+            <th>Auther</th>
+            <th>Title</th>
+            <th>Number of Pages</th>
+            <th>Description</th>
+            <th>In Stock</th>
+            <th>Price</th>
+            <th>Remove Book</th>
+            <th>Order Book</th>
+         </tr>
+         <tr>
+            <td><input name="autherSearch" type="text" placeholder="Search auther by name" ng-model="autherSearchString"></td>
+         </tr>
+         <tr ng-repeat="book in books | searchAuther:autherSearchString">
+            <td>{{book.auther}}</td>
+            <td>{{book.title}}</td>
+            <td>{{book.numPages}}</td>
+            <td>{{book.description}}</td>
+            <td>{{book.inStock}}</td>
+            <td>{{book.price}}</td>
+            <td>
+               <button type="submit" value="remove" ng-click="removeBook(book)">Remove book</button>
+            </td>
+            <td>
+               <button type="submit" value="order" ng-click="orderBook(book)">Order Book</button>
+            </td>
+         </tr>
+      </table>
+      <br><br><br>
+	<b>{{err}}</b>
+  </div>
+
+</html>
