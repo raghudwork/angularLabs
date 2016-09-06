@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<div ng-controller="addBookCtrl">
+    <form>
+
+    Auther :
+    <input name="auther" type="text" ng-model="book.auther">
+    <br> Title :
+    <input name="title" type="text" ng-model="book.title">
+    <br> Number of Pages :
+    <input name="numPages" type="text" ng-model="book.numPages">
+    <br> Description :
+    <input name="description" type="text" ng-model="book.description">
+    <br> In Stock :
+    <input name="inStock" type="text" ng-model="book.inStock">
+    <br> Price :
+    <input name="price" type="text" ng-model="book.price">
+    <br>
+    <br>
+    <button type="submit" value="Submit" ng-click="addBook(book)">Add book</button>
+    <b>{{err}}</b>
+    <br>
+    <br>
+  </form>
+
+</div>    
+
+</html>
