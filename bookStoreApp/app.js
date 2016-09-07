@@ -14,6 +14,13 @@
                             controller : 'addBookCtrl'
                         })
 
+                        .state('bookDetails',{
+                            url: "/bookList/:auther",
+                            templateUrl: "bookDetails.html",
+                            controller : 'addBookCtrl'
+
+                        })
+
                         .state('addBook', {
                             url: "/addBook",
                             templateUrl: "addBook.html"

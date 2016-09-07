@@ -15,11 +15,11 @@
          <tr>
             <td><input name="autherSearch" type="text" placeholder="Search auther by name" ng-model="autherSearchString"></td>
          </tr>
-         <tr ng-repeat="book in books | searchAuther:autherSearchString">
-            <td>{{book.auther}}</td>
+         <tr ng-click="setBook(book)" ng-repeat="book in books | searchAuther:autherSearchString">
+            <td><a ng-href="#/bookList/{{book.auther}}">{{book.auther}}</a></td>            
             <td>{{book.title}}</td>
             <td>{{book.numPages}}</td>
-            <td>{{book.description}}</td>
+            <td>{{(book.description | limitTo: 20 )}}<b>.. more</b></td>
             <td>{{book.inStock}}</td>
             <td>{{book.price}}</td>
             <td>
@@ -33,5 +33,4 @@
       <br><br><br>
 	<b>{{err}}</b>
   </div>
-
 </html>

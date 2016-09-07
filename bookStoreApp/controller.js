@@ -19,6 +19,10 @@
             $scope.bookListMsg = "Book removed";
         }
 
+        $scope.setBook = function(book){
+            $scope.book = book;
+        }
+
         $scope.orderBook = function(book) {
             BookService.setBookToOrder(book);
             //$scope.bookToOrder = BookService.getBookToOrder();

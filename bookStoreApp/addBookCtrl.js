@@ -1,12 +1,25 @@
 (function(){
 
 	'use strict'
-	angular.module('myApp').controller('addBookCtrl', ['$scope', 'BookService', function($scope, BookService) {
+	angular.module('myApp').controller('addBookCtrl', ['$scope', 'BookService', '$stateParams', function($scope, BookService, $stateParams) {
 
 		$scope.books = BookService.getBookListArray();
         $scope.book = {};
         $scope.bookToOrder = BookService.getBookToOrder();
         $scope.err = BookService.getMessage();
+        $scope.auther = $stateParams.auther;
+
+        if($scope.auther !==''){
+            var allBooks = $scope.books;
+            var auther = $scope.auther
+            for (var i = 0; i < allBooks.length; i++) {
+                if (allBooks[i].auther ===auther) {
+                    $scope.book  = allBooks[i];
+                }
+            }
+        }
+
+
 
         $scope.addBook = function(book) {
 
@@ -29,9 +42,9 @@
                 BookService.setMessage("Book already contains");
                 $scope.err = BookService.getMessage();
             }
-        }      
+        }  
 
-                $scope.contains = function(book, books) {
+        $scope.contains = function(book, books) {
 
             var containsBook = false;
             //extract sub arrays from books for each property
