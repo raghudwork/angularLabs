@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+   <div ng-controller="addBookCtrl">
+      <table border="1" >
+         <tr>
+         	<td><b>Auther</b></td>
+            <td>{{book.auther}}</td>
+         </tr>
+         <tr>
+         	<td><b>Title</b></td>
+            <td>{{book.title}}</td>
+         </tr>
+         <tr>
+         	<td><b>Number of Pages</b></td>
+            <td>{{book.numPages}}</td>
+         </tr>
+         <tr>
+         	<td><b>Description</b></td>
+            <td>{{(book.description)}}</td>
+         </tr>
+         <tr>
+         	<td><b>In stock</b></td>
+            <td>{{book.inStock}}</td>
+         </tr>
+         <tr>
+         	<td><b>Price</b></td>
+            <td>{{book.price}}</td>
+         </tr>
+      </table>
+   </div>
+</html>
