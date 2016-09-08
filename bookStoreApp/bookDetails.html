@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
    <div ng-controller="addBookCtrl">
-      <table border="1" >
+      <table border="1" class="bookListTable" >
          <tr>
          	<td><b>Auther</b></td>
             <td>{{book.auther}}</td>
@@ -25,6 +25,14 @@
          <tr>
          	<td><b>Price</b></td>
             <td>{{book.price}}</td>
+         </tr>
+         <tr>
+            <td><b>Book added at</b></td>
+            <td>{{book.addedAt | date:'medium'}}</td>
+         </tr>
+         <tr>
+            <td><b>Book ordered Last at</b></td>
+            <td>{{book.orderedAt | date:'medium'}}</td>
          </tr>
       </table>
    </div>

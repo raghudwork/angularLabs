@@ -1,7 +1,7 @@
 (function(){
 
 	'use strict'
-	angular.module('myApp').controller('addBookCtrl', ['$scope', 'BookService', '$stateParams', function($scope, BookService, $stateParams) {
+	angular.module('myApp').controller('addBookCtrl', ['$scope', 'BookService', '$stateParams', '$state', function($scope, BookService, $stateParams, $state) {
 
 		$scope.books = BookService.getBookListArray();
         $scope.book = {};
@@ -30,18 +30,25 @@
                     numPages: book.numPages,
                     description: book.description,
                     inStock: book.inStock,
-                    price: book.price
+                    price: book.price,
+                    addedAt: new Date(),
+                    orderedAt: ""
                 };                
                 BookService.setMessage("Book Added");
                 $scope.err = BookService.getMessage();
                 $scope.books.push(temp);
                 // emptying the object after adding the book
                 $scope.book = {};
+                $state.go('bookList');
+
+
 
             } else {
                 BookService.setMessage("Book already contains");
                 $scope.err = BookService.getMessage();
             }
+
+
         }  
 
         $scope.contains = function(book, books) {

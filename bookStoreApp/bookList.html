@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <div ng-controller="myCtrl">
-      <table border="1" >
+      <table class="bookListTable" border="1" >
          <tr>
             <th>Auther</th>
             <th>Title</th>
@@ -9,19 +9,23 @@
             <th>Description</th>
             <th>In Stock</th>
             <th>Price</th>
+            <th>Book added at</th>
+            <th>Book ordered Last at</th>
             <th>Remove Book</th>
-            <th>Order Book</th>
+            <th>Order Book</th>            
          </tr>
          <tr>
             <td><input name="autherSearch" type="text" placeholder="Search auther by name" ng-model="autherSearchString"></td>
          </tr>
-         <tr ng-click="setBook(book)" ng-repeat="book in books | searchAuther:autherSearchString">
-            <td><a ng-href="#/bookList/{{book.auther}}">{{book.auther}}</a></td>            
-            <td>{{book.title}}</td>
-            <td>{{book.numPages}}</td>
-            <td>{{(book.description | limitTo: 20 )}}<b>.. more</b></td>
-            <td>{{book.inStock}}</td>
-            <td>{{book.price}}</td>
+         <tr  ng-repeat="book in books | searchAuther:autherSearchString">
+            <td ng-click="setBook(book)">{{book.auther}}</td>            
+            <td ng-click="setBook(book)">{{book.title}}</td>
+            <td ng-click="setBook(book)">{{book.numPages}}</td>
+            <td ng-click="setBook(book)">{{(book.description | limitTo: 20 )}}<b>.. more</b></td>
+            <td ng-click="setBook(book)">{{book.inStock}}</td>
+            <td ng-click="setBook(book)">{{book.price | currency:"&#8377; ":2}}</td>
+            <td ng-click="setBook(book)">{{book.addedAt | date:'medium'}}</td>
+            <td ng-click="setBook(book)">{{book.orderedAt | date:'medium'}}</td>
             <td>
                <button type="submit" value="remove" ng-click="removeBook(book)">Remove book</button>
             </td>
@@ -31,6 +35,5 @@
          </tr>
       </table>
       <br><br><br>
-	<b>{{err}}</b>
   </div>
 </html>

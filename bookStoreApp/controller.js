@@ -2,7 +2,7 @@
 
     'use strict'
 
-    angular.module('myApp').controller('myCtrl', ['$scope', 'BookService', function($scope, BookService) {
+    angular.module('myApp').controller('myCtrl', ['$scope', 'BookService', '$state', function($scope, BookService, $state) {
 
         $scope.books = BookService.getBookListArray();
         $scope.book = {};
@@ -21,6 +21,7 @@
 
         $scope.setBook = function(book){
             $scope.book = book;
+            $state.go('bookDetails', {auther: book.auther});
         }
 
         $scope.orderBook = function(book) {
@@ -50,7 +51,9 @@
 
         $scope.placeOrder = function(quantity) {
             var book = BookService.getBookToOrder();
-            book.inStock = parseInt(Number(book.inStock) - Number(quantity.orderQuantity));
+            //book.inStock = parseInt(Number(book.inStock) - Number(quantity.orderQuantity));
+            book.inStock = book.inStock - quantity.orderQuantity;
+            book.orderedAt = new Date();
         }
 
         $scope.orderBookWithQuantiy = function(quantity) {

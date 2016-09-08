@@ -1,28 +1,68 @@
 <!DOCTYPE html>
 <html>
+<style type="text/css">
+    table.addBookTable {
+        font-size: 14px;
+        border: 0px solid #CCC;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    .addBookTable td {
+        padding: 1px;
+        margin: 1px;
+        border: 0px;
+    }
+</style>
 <div ng-controller="addBookCtrl">
-    <form>
-
-    Auther :
-    <input name="auther" type="text" ng-model="book.auther">
-    <br> Title :
-    <input name="title" type="text" ng-model="book.title">
-    <br> Number of Pages :
-    <input name="numPages" type="text" ng-model="book.numPages">
-    <br> Description :
-    <input name="description" type="text" ng-model="book.description">
-    <br> In Stock :
-    <input name="inStock" type="text" ng-model="book.inStock">
-    <br> Price :
-    <input name="price" type="text" ng-model="book.price">
-    <br>
-    <br>
-    <button type="submit" value="Submit" ng-click="addBook(book)">Add book</button>
-    <b>{{err}}</b>
-    <br>
-    <br>
-  </form>
-
-</div>    
+<form name="addBookForm" novalidate>
+    {{err}}
+<table class="addBookTable" width="60%" >
+    <tbody>
+        <tr>
+            <td>Auther</td>
+            <td>:</td>
+            <td><input name="auther" type="text" ng-model="book.auther" required>
+                <span style="color:red" ng-show="addBookForm.$submitted && addBookForm.auther.$error.required">Provide auther name</span>
+            </td>
+        </tr>
+        <tr>
+            <td>Title </td>
+            <td>:</td>
+            <td><input name="title" type="text" ng-model="book.title" required>
+                <span style="color:red" ng-show="addBookForm.$submitted &&addBookForm.title.$error.required">Provide title</span>
+            </td>
+        </tr>
+        <tr>
+            <td>Number of Pages </td>
+            <td>:</td>
+            <td><input name="numPages" type="number" ng-model="book.numPages" required>
+                <span style="color:red" ng-show="addBookForm.$submitted &&addBookForm.title.$error.required">Provide title</span>
+            </td>
+        </tr>
+        <tr>
+            <td>Description </td>
+            <td>:</td>
+            <td><textarea rows="4" cols="25" name="description" ng-model="book.description" required maxlength="100"></textarea>
+                <span style="color:red" ng-show="addBookForm.$submitted &&addBookForm.title.$error.required">Provide description</span>
+            </td>
+        </tr>
+        <tr>
+            <td>In Stock </td>
+            <td>:</td>
+            <td><input name="inStock" type="number" ng-model="book.inStock" required>
+                <span style="color:red" ng-show="addBookForm.$submitted &&addBookForm.inStock.$error.required">Enter instock</span>
+            </td>
+        </tr>
+        <tr>
+            <td>Price</td>
+            <td>:</td>
+            <td><input name="price" type="number" ng-model="book.price" required>
+                <span style="color:red" ng-show="addBookForm.$submitted &&addBookForm.price.$error.required">Enter price</span>
+            </td>
+        </tr>
+    </tbody>
+</table>
+<button type="submit" value="Submit" ng-click="addBookForm.$valid && addBook(book)">Add book</button>
+<form>
+</div>
 
 </html>
