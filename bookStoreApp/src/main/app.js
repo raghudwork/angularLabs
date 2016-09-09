@@ -10,20 +10,20 @@
      	$stateProvider
                         .state('bookList', {
                             url: "/bookList",
-                            templateUrl: "bookList.html",
+                            templateUrl: "html/bookList.html",
                             controller : 'addBookCtrl'
                         })
 
                         .state('bookDetails',{
                             url: "/bookList/:auther",
-                            templateUrl: "bookDetails.html",
+                            templateUrl: "html/bookDetails.html",
                             controller : 'addBookCtrl'
 
                         })
 
                         .state('addBook', {
                             url: "/addBook",
-                            templateUrl: "addBook.html"
+                            templateUrl: "html/addBook.html"
                         })
 
      }]);
