@@ -5,10 +5,10 @@
          <tr>
             <th>Auther</th>
             <th>Title</th>
-            <th>Number of Pages</th>
+            <th>Number of Pages <img src="html/images/sort_neutral.ico" height=20 width=20 ng-click="sortBy('numPages')"></img></th>
             <th>Description</th>
             <th>In Stock</th>
-            <th>Price</th>
+            <th>Price <img src="html/images/sort_neutral.ico" height=20 width=20 ng-click="sortBy('price')"></img></th>
             <th>Book added at</th>
             <th>Book ordered Last at</th>
             <th>Remove Book</th>
@@ -17,7 +17,7 @@
          <tr>
             <td><input name="autherSearch" type="text" placeholder="Search auther by name" ng-model="autherSearchString"></td>
          </tr>
-         <tr  ng-repeat="book in books | searchAuther:autherSearchString">
+         <tr  ng-repeat="book in books | searchAuther:autherSearchString |orderBy:columnName:reverse">
             <td ng-click="setBook(book)">{{book.auther}}</td>            
             <td ng-click="setBook(book)">{{book.title}}</td>
             <td ng-click="setBook(book)">{{book.numPages}}</td>
@@ -27,7 +27,7 @@
             <td ng-click="setBook(book)">{{book.addedAt | date:'medium'}}</td>
             <td ng-click="setBook(book)">{{book.orderedAt | date:'medium'}}</td>
             <td>
-               <button type="submit" value="remove" ng-click="removeBook(book)">Remove book</button>
+               <button type="submit" value="remove" ng-click="showRemoveBookConfirm(book)">Remove book</button>
             </td>
             <td>
                <button type="submit" value="order" ng-click="orderBook(book)">Order Book</button>

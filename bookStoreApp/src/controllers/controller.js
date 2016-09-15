@@ -7,36 +7,29 @@
         $scope.books = BookService.getBookListArray();
         $scope.book = {};
         $scope.bookToOrder = BookService.getBookToOrder();
+        $scope.bookToRemove = BookService.getBookToRemove();
         $scope.bookListMsg = BookService.getMessage();
+        //for sorting order
+        $scope.reverse = true;
 
-        $scope.removeBook = function(book) {
-            var allBooks = $scope.books;
-            for (var i = 0; i < allBooks.length; i++) {
-                if ((allBooks[i].auther === book.auther) && (allBooks[i].title === book.title)) {
-                    $scope.books.splice(i, 1);
-                }
-            }
-            $scope.bookListMsg = "Book removed";
-        }
-
+        //setting the book to show details in differet view
         $scope.setBook = function(book){
             $scope.book = book;
             $state.go('bookDetails', {auther: book.auther});
         }
 
+        $scope.sortBy = function(column){
+            $scope.reverse = ($scope.columnName === column) ? !$scope.reverse : false;
+            $scope.columnName = column;
+        }
+
+        //ORDERING BOOK RELATED
+
         $scope.orderBook = function(book) {
             BookService.setBookToOrder(book);
-            //$scope.bookToOrder = BookService.getBookToOrder();
             $scope.bookToOrder = book;
             // Get the modal
             var modal = document.getElementById('myModal');
-
-            // Get the button that opens the modal
-            var btn = document.getElementById("myBtn");
-
-            // Get the <span> element that closes the modal
-            var span = document.getElementsByClassName("close")[0];
-
             modal.style.display = "block";
         }
 
@@ -44,14 +37,11 @@
             // Get the modal
             var modal = document.getElementById('myModal');
             modal.style.display = "none";
-        }
-
-
+        }        
 
 
         $scope.placeOrder = function(quantity) {
             var book = BookService.getBookToOrder();
-            //book.inStock = parseInt(Number(book.inStock) - Number(quantity.orderQuantity));
             book.inStock = book.inStock - quantity.orderQuantity;
             book.orderedAt = new Date();
         }
@@ -62,6 +52,41 @@
             $scope.placeOrder(quantity);
             modal.style.display = "none";
             BookService.setMessage("Book order placed");
+        }
+        
+
+        //REMOVING BOOK REALTED
+        $scope.removeBook = function() {
+            var allBooks = $scope.books;
+            var book = BookService.getBookToRemove();
+            for (var i = 0; i < allBooks.length; i++) {
+                if ((allBooks[i].auther === book.auther) && (allBooks[i].title === book.title)) {
+                    $scope.books.splice(i, 1);
+                }
+            }
+            $scope.bookListMsg = "Book removed";
+        }
+
+        $scope.removeBookConfirm = function(book){
+            // Get the modal
+            var modal = document.getElementById('confirmBookDeleteModel');
+            $scope.removeBook();
+            modal.style.display = "none";
+
+        }
+
+        $scope.showRemoveBookConfirm = function(book) {
+            BookService.setBookToRemove(book);
+            // Get the modal
+            var modal = document.getElementById('confirmBookDeleteModel');
+
+            modal.style.display = "block";
+        }
+
+        $scope.closeRemoveBookConfirm = function() {
+            // Get the modal
+            var modal = document.getElementById('confirmBookDeleteModel');
+            modal.style.display = "none";
         }
 
     }])

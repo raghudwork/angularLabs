@@ -1,40 +1,40 @@
 var tempBooks = [{
         auther: "Raghu",
         title: "Raghu book",
-        numPages: 2,
+        numPages: 2000,
         description: "Raghu written. Sachin Ramesh Tendulkar is a former Indian cricketer and captain, widely regarded as one of the greatest batsmen of all time. He took up cricket at the age of eleven, made his Test debut on 15 November 1989 against Pakistan in Karachi at the age of sixteen, and went on to represent Mumbai domestically and India internationally for close to twenty-four years. He is the only player to have scored one hundred international centuries, the first batsman to score a double century in a One Day International, the holder of the record for the number of runs in both ODI and Test cricket, and the only player to complete more than 30,000 runs in international cricket.",
-        inStock: 20,
+        inStock: 150,
         price: 200
     },
     {
         auther: "Ravi",
         title: "Ravi book",
-        numPages: 2,
+        numPages: 1300,
         description: "Ravi written",
-        inStock: 20,
-        price: 200
+        inStock: 120,
+        price: 225
     },
     {
         auther: "Santhosh",
         title: " Santhosh book",
-        numPages: 2,
+        numPages: 1500,
         description: "Santhosh written. Virat Kohli (born 5 November 1988) is an Indian international cricketer who currently captains the Indian team in Test cricket and is its vice-captain in limited-overs formats. A right-handed batsman often rated as one of the best batsmen in the world,Kohli was ranked eighth in ESPN's list of world's most famous athletes in 2016. He plays for the Royal Challengers Bangalore in the Indian Premier League (IPL), and has been the team's captain since 2013",
-        inStock: 20,
-        price: 200
+        inStock: 100,
+        price: 240
     },
     {
         auther: "Virat",
         title: "Virat book",
-        numPages: 2,
+        numPages: 2200,
         description: "Virat written",
-        inStock: 20,
-        price: 200
+        inStock: 180,
+        price: 150
     },
     {
         auther: "Dhoni",
         title: "Dhoni book",
-        numPages: 2,
+        numPages: 2500,
         description: "Dhoni written",
-        inStock: 20,
-        price: 200
+        inStock: 200,
+        price: 500
     }]

@@ -7,6 +7,7 @@
 		this.bookList = [];
 		this.bookToOrder = {};
 		this.message = "";
+		this.bookToRemove = {};
 
 		var test = tempBooks;
 
@@ -25,6 +26,14 @@
 
 		this.setBookToOrder = function(book){
 			this.bookToOrder = book;
+		}
+
+		this.getBookToRemove = function(){
+			return this.bookToRemove;
+		}
+
+		this.setBookToRemove = function(book){
+			this.bookToRemove = book;
 		}
 
 		this.getBookToOrder = function(){
