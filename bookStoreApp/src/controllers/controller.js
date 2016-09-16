@@ -89,6 +89,18 @@
             modal.style.display = "none";
         }
 
+        //SAVING BOOK
+        $scope.saveBook = function(book){
+            var allBooks = $scope.books;
+            for (var i = 0; i < allBooks.length; i++) {
+                if ((allBooks[i].auther === book.auther) && (allBooks[i].title === book.title)) {
+                    allBooks[i].inStock = book.inStock;
+                    break;
+                }
+
+            }
+        }
+
     }])
 
 })();

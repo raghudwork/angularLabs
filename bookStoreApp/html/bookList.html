@@ -22,7 +22,12 @@
             <td ng-click="setBook(book)">{{book.title}}</td>
             <td ng-click="setBook(book)">{{book.numPages}}</td>
             <td ng-click="setBook(book)">{{(book.description | limitTo: 20 )}}<b>.. more</b></td>
-            <td ng-click="setBook(book)">{{book.inStock}}</td>
+            <td>
+               <span ng-click="setBook(book)" ng-show="!editInStock">{{book.inStock}}</span>
+               <input type="number" ng-model="book.inStock" ng-required ng-show="editInStock"/>
+               <img src="html/images/edit_icon.ico" height=15 width=15 ng-click="editInStock = true" ng-show="!editInStock"></img>
+               <img src="html/images/save.ico" height=15 width=15 ng-show="editInStock" ng-click="editInStock = false; saveBook(book)"></img>
+            </td>
             <td ng-click="setBook(book)">{{book.price | currency:"&#8377; ":2}}</td>
             <td ng-click="setBook(book)">{{book.addedAt | date:'medium'}}</td>
             <td ng-click="setBook(book)">{{book.orderedAt | date:'medium'}}</td>
